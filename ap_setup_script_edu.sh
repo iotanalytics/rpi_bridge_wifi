@@ -57,7 +57,8 @@ automatic_local_file=/etc/rc.local
 
 sed -i '$d' $automatic_local_file
 
-echo 'sudo create_ap wlan1 eth0' $hotspot_username $hotspot_password >> $automatic_local_file
+echo 'sudo ifconfig wlan0 down' # shutdown the pi's own wifi adaptor. then wlan1 will automatically connect to the Paw_secure
+echo 'sudo create_ap wlan2 eth0' $hotspot_username $hotspot_password >> $automatic_local_file
 echo "sudo /etc/init.d/ssh restart" >> $automatic_local_file
 echo "exit 0" >> $automatic_local_file 
 
